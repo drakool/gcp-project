@@ -1,5 +1,14 @@
 #GCP-Project
-Simple application for Google Cloud Platform deplo
+Simple application for Google Cloud Platform, originially created by [lehauchicha](https://dev.to/lehauchicha/google-cloud-platform-deploy-simple-java-spring-boot-application-4f85) but I had to do some changes to get it to work on my environment.
+
+## Technologies
+This project uses:
+1. Springboot
+2. Mapstruct
+3. Docker 
+
+## TODO
+1. use 
 
 ## Building the docker image 
 ```
@@ -8,6 +17,7 @@ docker build -t gcp-project:0.0.1 .
 
 
 ## running on local docker container
+I'll use my postgres instance of the kong DB.
 ```
 docker run -p8083:8080 -e DB_NAME=postgres -e DB_USER=kong --network=kong-net --env DB_HOST=kong-database -e DB_PASS=kongpass gcp-project:0.0.1
 ```
