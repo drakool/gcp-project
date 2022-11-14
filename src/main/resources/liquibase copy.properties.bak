@@ -1,0 +1,3 @@
+username=${DB_USER}
+password=${DB_PASS}
+url=jdbc:postgresql://localhost/${DB_NAME}

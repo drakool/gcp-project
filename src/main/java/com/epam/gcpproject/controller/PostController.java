@@ -19,26 +19,29 @@ public class PostController {
 
     private final PostRepository postRepository;
 
+
     private final PostMapper mapper;
 
     @GetMapping("/posts")
     public List<PostDto> getPosts() {
+
+//        PostMapper.INSTANCE.toDto(null)
         return postRepository.findAll().stream()
-                .map(mapper::toDto)
+                .map(mapper.INSTANCE::toDto)
                 .collect(Collectors.toList());
     }
 
     @GetMapping("/posts/{id}")
     public ResponseEntity<PostDto> getPostById(@PathVariable long id) {
         return postRepository.findById(id)
-                .map(mapper::toDto)
+                .map(mapper.INSTANCE::toDto)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping("/posts")
     public ResponseEntity<PostDto> savePost(@RequestBody @Validated PostDto postDto) {
-        return new ResponseEntity<>(mapper.toDto(postRepository.save(mapper.toEntity(postDto))), HttpStatus.CREATED);
+        return new ResponseEntity<>(mapper.INSTANCE.toDto(postRepository.save(mapper.INSTANCE.toEntity(postDto))), HttpStatus.CREATED);
     }
 
     @PutMapping("/posts/{id}")
@@ -49,7 +52,7 @@ public class PostController {
                     existsPost.setDescription(postDto.getDescription());
                     existsPost.setTitle(postDto.getTitle());
                     existsPost.setFullText(postDto.getFullText());
-                    return ResponseEntity.ok(mapper.toDto(postRepository.save(existsPost)));
+                    return ResponseEntity.ok(mapper.INSTANCE.toDto(postRepository.save(existsPost)));
                 })
                 .orElse(ResponseEntity.notFound().build());
     }

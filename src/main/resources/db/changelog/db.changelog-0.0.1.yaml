@@ -5,6 +5,7 @@ databaseChangeLog:
       changes:
         - modifyDataType:
             columnName: id
-            newDataType: SERIAL
+            newDataType: BIGINT
+            autoIncrement: true 
             schemaName: public
             tableName: posts
