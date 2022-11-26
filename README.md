@@ -67,3 +67,7 @@ curl -v -X POST -d '{"title":"Welcome","description":"The content of the post is
 * Connection #0 to host localhost left intact
 {"id":1,"title":"Welcome","description":"The content of the post is here. I hope that the length is more than 50 characters otherwise it will not be processed successfully and 400 response needs to be returned","fullText":"The content of the post is here. I hope that the length is more than 50 characters otherwise it will not be processed successfully and 400 response needs to be returned","author":"drakool the hulk","temp":null}* Closing connection 0
 ```
+
+
+## Pushing to quay.io registry
+this repo [gcp-projects](https://quay.io/repository/moismail/gcp-projects) will hosts all of the images push from this project 
